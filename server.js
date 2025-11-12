@@ -8,10 +8,18 @@ require('dotenv').config();
 const PORT=process.env.PORT || 4000;
 // Import models
 
-// ------------------- Default route -------------------
-app.get('/', (req, res) => {
+const logRequest = (req, res, next) => {
+  console.log(`[${new Date ().toLocaleString()}] Request Made to : ${req.originalUrl}`);
+  next();
+}
+app.use(logRequest);
+
+
+
+
+app.get('/',  (req, res) => {
   res.send("Hello,welcome to hotel");
-});
+}); 
 
 
 const personRoutes= require('./routes/personRoutes');
