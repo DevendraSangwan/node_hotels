@@ -33,6 +33,7 @@ passport.use(new LocalStrategy(async (USERNAME, password, done) => {
       return done(null, false, { message: 'Incorrect password' });
     }
 
+  
     return done(null, user);
 
   } catch (err) {
